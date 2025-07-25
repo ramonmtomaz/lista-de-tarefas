@@ -1,64 +1,119 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lista de Objetivos</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="cabecalho">
-      <h1 class="cabecalho">Lista de Tarefas</h1>
-    </div>
+import BotaoConclui from "./botaoConcluir.js";
 
-    <div class="paginatoda">
-      <div class="navbar">
-        <ul>
-          <li class="listaNavbar">
-            <a href="#" class="abaPendente">Tarefas Pendentes</a>
-            <a href="#" class="abaConcluido">Tarefas Concluidas</a>
-          </li>
-        </ul>
-      </div>
+import BotaoRemover from "./botaoRemover.js";
 
-      <div class="conteudo">
-        <div class="listaTarefas">
-          <div class="tarefasPendentes" style="display: block">
-            <div class="input-add-tarefa">
-              <h2>Informe a Tarefa</h2>
-              <input
-                type="text"
-                class=""
-                placeholder="Informe a Tafera e o prazo para conclusão!"
-                data-input
-              />
-              <input type="date" class="campoData" data-data />
-              <button class="botao-add-tarefa" data-button-add>
-                Adicionar
-              </button>
-            </div>
+let tarefas = JSON.parse(localStorage.getItem("tarefas")) || [];
+const salvarTarefas = () =>
+  localStorage.setItem("tarefas", JSON.stringify(tarefas));
 
-            <div class="lista-pendente">
-              <h2>Tarefas Pendentes</h2>
-              <ul class="campoListaPendente" data-lista-pendente></ul>
-            </div>
-          </div>
-          <div class="lista-concluido" style="display: none">
-            <h2>Tarefas Concluidas</h2>
+const renderizarTarefas = () => {
+  const listaPendente = document.querySelector("[data-lista-pendente]");
+  const listaConcluida = document.querySelector("[data-lista-concluido]");
 
-            <ul class="campoListaConcluido" data-lista-concluido></ul>
-          </div>
-        </div>
-      </div>
-    </div>
+  listaPendente.innerHTML = "";
+  listaConcluida.innerHTML = "";
 
-    <script type="module" src="main.js"></script>
-  </body>
-</html>
+  tarefas.forEach((tarefa, indice) => {
+    const criarTarefa = document.createElement("li");
+    criarTarefa.innerHTML = `<p>${
+      tarefa.texto
+    } prazo para terminar ${formatarData(tarefa.data)}</p>`;
+
+    if (tarefa.concluida) {
+      const botaoRemover = BotaoRemover();
+      botaoRemover.addEventListener("click", () => {
+        removerTarefa(indice);
+      });
+      criarTarefa.appendChild(botaoRemover);
+      listaConcluida.appendChild(criarTarefa);
+    } else {
+      const botaoConclui = BotaoConclui();
+      botaoConclui.addEventListener("click", () => {
+        concluirTarefa(indice);
+      });
+      criarTarefa.appendChild(botaoConclui);
+      const botaoRemover = BotaoRemover();
+      botaoRemover.addEventListener("click", () => {
+        removerTarefa(indice);
+      });
+      criarTarefa.appendChild(botaoRemover);
+
+      listaPendente.appendChild(criarTarefa);
+    }
+  });
+};
+
+const concluirTarefa = (indice) => {
+  tarefas[indice].concluida = !tarefas[indice].concluida;
+  salvarTarefas();
+  renderizarTarefas();
+};
+
+const removerTarefa = (indice) => {
+  tarefas.splice(indice, 1);
+  salvarTarefas();
+  renderizarTarefas();
+};
+
+const adicionarTarefa = (evento) => {
+  evento.preventDefault();
+  const campoTarefa = document.querySelector("[data-input]");
+  const valorTarefa = campoTarefa.value;
+  const campoData = document.querySelector("[data-data]");
+  const valorData = campoData.value;
+
+  if (valorTarefa === "" || valorData === "") {
+    return;
+  }
+
+  tarefas.push({
+    texto: valorTarefa,
+    data: valorData,
+    concluida: false,
+  });
+
+  campoTarefa.value = "";
+  campoData.value = "";
+  salvarTarefas();
+  renderizarTarefas();
+};
+
+const formatarData = (dataString) => {
+  if (!dataString) return "";
+  const partes = dataString.split("-");
+  return `${partes[2]}/${partes[1]}/${partes[0]}`;
+};
+
+const botaoAdd = document.querySelector("[data-button-add]");
+botaoAdd.addEventListener("click", adicionarTarefa);
+
+renderizarTarefas();
+
+const alterarAba = () => {
+  const abaPendente = document.querySelector(".abaPendente");
+  const abaConcluido = document.querySelector(".abaConcluido");
+  const campoPendente = document.querySelector(".tarefasPendentes");
+  const campoConcluido = document.querySelector(".lista-concluido");
+
+  abaPendente.addEventListener("click", () => {
+    if (campoPendente.style.display === "none") {
+      campoPendente.style.display = "block";
+      campoConcluido.style.display = "none";
+    }
+  });
+
+  abaConcluido.addEventListener("click", () => {
+    if (campoConcluido.style.display === "none") {
+      campoConcluido.style.display = "block";
+      campoPendente.style.display = "none";
+    }
+  });
+};
+
+const abaPendente = document.querySelector(".abaPendente");
+
+abaPendente.addEventListener("click", alterarAba);
+
+const abaConcluido = document.querySelector(".abaConcluido");
+
+abaConcluido.addEventListener("click", alterarAba);
