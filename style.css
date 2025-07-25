@@ -1,109 +1,128 @@
-.body {
-    font-family: Arial, Helvetica, sans-serif;
-    /* background-color: rgba(128, 128, 128, 0.151); */
-    width: 100%;
-    height: 100%;    
+ {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  line-height: 1.6;
+  background-color: #f4f4f4;
+  font-family: "Inter", sans-serif;
+}
+
+.paginatoda {
+  display: flex;
+  min-height: calc(100vh - 80px);
 }
 
 .cabecalho {
-    background-color: grey;
-    color: #fff;
-    /* box-shadow: 0px 0px 5px #000; */
+  background-color: white;
+  color: #000;
+  margin-top: 0;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.navbar {
-    background-color: #000;    
+.navbar ul {
+  width: 220px;
+  background-color: #f8f9fa;
+  border-right: 1px solid #dee2e6;
+  flex-shrink: 0;
+  padding: 0;
+  height: 100%;
+  margin-top: 0;
 }
 
 .listaNavbar {
-    padding: 5px;
-    gap: 100px;
+  display: flex;
+  flex-direction: column;
+  list-style: none;
 }
 
-.listaNavbar > a {
-    color: #fff;
-    text-decoration: none;
-    padding: 5px;
-    transition: transform 0.3s ease;
+.listaNavbar a {
+  display: block;
+  width: auto;
+  text-align: left;
+  color: #000;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+  background-color: white;
+  border-bottom: solid;
 }
 
 a:hover {
-    background-color: grey;
-    border-radius: 5px;    
-    transform: scale(1.1);
-    
+  transform: scale(1.1);
 }
 
 h1.cabecalho {
-    text-align: center;
+  text-align: center;
 }
 
 .conteudo {
-    margin: 0px 110px 0px 110px;
-    box-shadow: 0 0 10px #000000;
-    padding: 20px; 
-    text-align: center;
-    border-radius: 10px;
+  flex-grow: 1;
+  padding: 2rem;
+  margin-top: 0;
+  /* margin: auto; */
+  max-width: 768px;
 }
 
-.addTarefa {
-    text-align: center;
-    background-color: rgba(128, 128, 128, 0.473);    
-    box-shadow: 0 0 5px black;
-    padding: 20px;        
+.input-add-tarefa {
+  text-align: center;
+  background-color: white;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  padding-bottom: 10px;
+  border-radius: 10px;
 }
 
-.adicionarTarefa {
-    background-color: white;
-    border-radius: 5px;
-    border: white;
-    box-shadow: 0 0 5px #000;
-    transition: transform 0.3s ease;
+.botao-add-tarefa {
+  background-color: white;
+  border-radius: 5px;
+  border: white;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
 }
 
-.adicionarTarefa:hover {
-    transform: scale(1.1);
-    margin-left: 5px;
-    box-shadow: 0 0 10px #000;
+.botao-add-tarefa:hover {
+  transform: scale(1.1);
+  margin-left: 5px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.tarefasPendentes, .tarefasConcluidas {
-    background-color: rgba(128, 128, 128, 0.473);
-    box-shadow: 0 0 5px black;    
-    border-radius: 5px;  
+.lista-pendente,
+.lista-concluido {
+  background-color: white;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
 }
 
-.tarefasPendentes  > h2, .tarefasConcluidas > h2 {
-    color: #fff;
-    padding: 5px;        
-    background-color: #000;
-    border-radius: 5px;    
+h2 {
+  color: #fff;
+  background-color: #000;
+  text-align: center;
 }
 
- li {
-    display: flex;      
-    align-items: center;
-    justify-content: center;
-    margin-top: -20px;
-    gap: 10px;
-    
-    
+li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -20px;
+  gap: 10px;
 }
 
 li > p {
-    padding: 5px;
-    text-align: left;
-    background-color: #fff;
-    width: 80%;
-    border: solid 1px;    
+  padding: 5px;
+  text-align: left;
+  background-color: #fff;
+  width: 80%;
+  border: solid 1px;
 }
 
-.concluido, .remover {
-    font-size: 16px; 
+.concluido,
+.remover {
+  font-size: 16px;
+  transition: transform 0.3s ease;
 }
 
-.concluido:hover, .remover:hover {
-    font-size: 22px;
+.concluido:hover,
+.remover:hover {
+  transform: scale(1.2);
 }
-
-
