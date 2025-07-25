@@ -1,4 +1,4 @@
-import BotaoConclui from "./concluirtarefa.js"
+import BotaoConclui from "./concluirTarefa.js"
 
 import BotaoRemover from "./removerTarefa.js"
 
