@@ -24,12 +24,13 @@ body {
 
 .navbar ul {
   width: 220px;
-  background-color: #f8f9fa;
+  background-color: #fff;
   border-right: 1px solid #dee2e6;
   flex-shrink: 0;
   padding: 0;
   height: 100%;
   margin-top: 0;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .listaNavbar {
@@ -45,8 +46,8 @@ body {
   color: #000;
   text-decoration: none;
   transition: transform 0.3s ease;
-  background-color: white;
   border-bottom: solid;
+  margin-top: 10px;
 }
 
 a:hover {
@@ -103,9 +104,10 @@ h2 {
 li {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   margin-top: -20px;
   gap: 10px;
+  padding-right: 20px;
 }
 
 li > p {
@@ -118,11 +120,82 @@ li > p {
 
 .concluido,
 .remover {
-  font-size: 16px;
+  font-size: 20px;
   transition: transform 0.3s ease;
+  background-color: white;
+  border: none;
 }
 
 .concluido:hover,
 .remover:hover {
   transform: scale(1.2);
+}
+
+input[type="date"] {
+  position: relative; /* Essencial para o posicionamento do placeholder */
+  cursor: pointer;
+  width: 220px;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+input[type="date"]:invalid {
+  color: transparent;
+}
+
+input[type="date"]:invalid::before {
+  position: absolute;
+  content: attr(data-placeholder);
+  color: #6d6d6d;
+}
+
+input[type="text"] {
+  border-radius: 5px;
+  padding: 5px;
+  width: 220px;
+}
+
+@media screen and (max-width: 480px) {
+  .paginatoda {
+    display: block;
+  }
+
+  .navbar ul {
+    width: 100%;
+    height: 40px;
+    background-color: #fff;
+    flex-shrink: 0;
+    padding: 0;
+    margin-top: 0;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  }
+
+  .listaNavbar {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .listaNavbar a {
+    display: block;
+    width: auto;
+    text-align: center;
+    font-size: smaller;
+    color: #000;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+    border-bottom: solid;
+    margin-top: 10px;
+  }
+
+  a:hover {
+    transform: scale(1.1);
+  }
+
+  .tarefasPendentes {
+    display: block;
+    gap: 15px;
+  }
 }
