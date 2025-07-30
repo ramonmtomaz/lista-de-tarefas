@@ -11,7 +11,6 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="cabecalho">
@@ -22,8 +21,8 @@
       <div class="navbar">
         <ul>
           <li class="listaNavbar">
-            <a href="#" class="abaPendente">Tarefas Pendentes</a>
-            <a href="#" class="abaConcluido">Tarefas Concluidas</a>
+            <a href="#" class="abaPendente">Objetivos Pendentes</a>
+            <a href="#" class="abaConcluido">Objetivos Concluidos</a>
           </li>
         </ul>
       </div>
@@ -32,26 +31,32 @@
         <div class="listaTarefas">
           <div class="tarefasPendentes" style="display: block">
             <div class="input-add-tarefa">
-              <h2>Informe a Tarefa</h2>
+              <h2>Informe o Objetivo</h2>
               <input
                 type="text"
                 class=""
-                placeholder="Informe a Tafera e o prazo para conclusão!"
+                placeholder="Informe o Objetivo"
                 data-input
               />
-              <input type="date" class="campoData" data-data />
+              <input
+                type="date"
+                class="campoData"
+                data-placeholder="Informe o prazo de termino"
+                required
+                data-data
+              />
               <button class="botao-add-tarefa" data-button-add>
                 Adicionar
               </button>
             </div>
 
             <div class="lista-pendente">
-              <h2>Tarefas Pendentes</h2>
+              <h2>Objetivos Pendentes</h2>
               <ul class="campoListaPendente" data-lista-pendente></ul>
             </div>
           </div>
           <div class="lista-concluido" style="display: none">
-            <h2>Tarefas Concluidas</h2>
+            <h2>Objetivos Concluídos</h2>
 
             <ul class="campoListaConcluido" data-lista-concluido></ul>
           </div>
