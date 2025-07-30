@@ -13,11 +13,15 @@ const renderizarTarefas = () => {
   listaPendente.innerHTML = "";
   listaConcluida.innerHTML = "";
 
+  tarefas.sort((a, b) => new Date(a.data) - new Date(b.data));
+
   tarefas.forEach((tarefa, indice) => {
     const criarTarefa = document.createElement("li");
-    criarTarefa.innerHTML = `<p>${
-      tarefa.texto
-    } prazo para terminar ${formatarData(tarefa.data)}</p>`;
+    criarTarefa.classList.add("tarefa-item");
+
+    criarTarefa.innerHTML =
+      `<p>${tarefa.texto} </p> ` +
+      `<p>Prazo de término: ${formatarData(tarefa.data)}</p>`;
 
     if (tarefa.concluida) {
       const botaoRemover = BotaoRemover();
