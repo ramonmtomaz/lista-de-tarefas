@@ -1,107 +1,79 @@
- {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
-  line-height: 1.6;
-  background-color: #f4f4f4;
+  height: 100vh;
+  background: linear-gradient(to bottom, rgb(163, 0, 0), rgb(34, 0, 0));
+  background-repeat: no-repeat;
   font-family: "Inter", sans-serif;
+  color: white;
 }
 
 .paginatoda {
   display: flex;
-  min-height: calc(100vh - 80px);
+  margin: auto;
+  width: 800px;
+  background-color: rgb(46, 45, 45);
+  border-radius: 5px;
+  box-shadow: 0 0 5px black;
 }
 
-.cabecalho {
-  background-color: white;
-  color: #000;
-  margin-top: 0;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-.navbar ul {
-  width: 220px;
-  background-color: #fff;
-  border-right: 1px solid #dee2e6;
-  flex-shrink: 0;
-  padding: 0;
-  height: 100%;
-  margin-top: 0;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+.navbar {
+  width: 200px;
+  /* border-right: solid 1px black; */
+  box-shadow: 0 0 5px black;
 }
 
 .listaNavbar {
-  display: flex;
-  flex-direction: column;
   list-style: none;
+  padding: 24px;
+  margin-left: -40px;
+  text-align: flex-start;
 }
 
 .listaNavbar a {
   display: block;
-  width: auto;
-  text-align: left;
-  color: #000;
   text-decoration: none;
+  color: white;
+  font-size: small;
   transition: transform 0.3s ease;
-  border-bottom: solid;
-  margin-top: 10px;
+  /* text-decoration: underline; */
+  padding: 5px;
 }
 
 a:hover {
-  transform: scale(1.1);
-}
-
-h1.cabecalho {
-  text-align: center;
+  transform: scale(1.2);
+  background-color: inherit;
+  border-radius: 5px;
+  box-shadow: 0 0 5px black;
 }
 
 .conteudo {
-  flex-grow: 1;
-  padding: 2rem;
-  margin-top: 0;
-  /* margin: auto; */
-  max-width: 768px;
-}
-
-.input-add-tarefa {
+  flex: 1;
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  background-color: white;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-  padding-bottom: 10px;
-  border-radius: 10px;
 }
 
-.botao-add-tarefa {
-  background-color: white;
-  border-radius: 5px;
-  border: white;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease;
+.tarefasPendentes h2,
+.lista-concluido h2 {
+  text-align: center;
+  border-bottom: solid white;
 }
 
-.botao-add-tarefa:hover {
-  transform: scale(1.1);
-  margin-left: 5px;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+.tarefasPendentes {
+  display: block;
 }
 
-.lista-pendente,
 .lista-concluido {
-  background-color: white;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
+  display: none;
 }
 
-h2 {
-  color: #fff;
-  background-color: #000;
-  text-align: center;
+.campoListaPendente {
+  list-style: none;
+  text-align: start;
 }
 
-li {
+.tarefa-item {
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -110,19 +82,31 @@ li {
   padding-right: 20px;
 }
 
-li > p {
+.item-pendente {
+  width: 180px;
+  height: 20px;
   padding: 5px;
   text-align: left;
-  background-color: #fff;
-  width: 80%;
-  border: solid 1px;
+  /* border-bottom: solid 1px white;
+  border-right: solid 1px white; */
+  box-shadow: 0 0 5px black;
+}
+
+.data-termino {
+  width: 180px;
+  height: 20px;
+  padding: 5px;
+  text-align: left;
+  /* border-bottom: solid 1px white;
+  border-right: solid 1px white; */
+  box-shadow: 0 0 5px black;
 }
 
 .concluido,
 .remover {
   font-size: 20px;
   transition: transform 0.3s ease;
-  background-color: white;
+  background-color: transparent;
   border: none;
 }
 
@@ -131,71 +115,116 @@ li > p {
   transform: scale(1.2);
 }
 
-input[type="date"] {
-  position: relative; /* Essencial para o posicionamento do placeholder */
-  cursor: pointer;
-  width: 220px;
+.botao-add-tarefa {
+  background-color: transparent;
+  border: none;
+  color: white;
+  box-shadow: 0 0 5px black;
   border-radius: 5px;
+  transition: transform 0.3s ease;
   padding: 5px;
+  margin: 5px;
 }
 
-input[type="date"]:invalid {
-  color: transparent;
-}
-
-input[type="date"]:invalid::before {
-  position: absolute;
-  content: attr(data-placeholder);
-  color: #6d6d6d;
-}
-
-input[type="text"] {
-  border-radius: 5px;
-  padding: 5px;
-  width: 220px;
+.botao-add-tarefa:hover {
+  transform: scale(1.2);
+  background-color: green;
 }
 
 @media screen and (max-width: 480px) {
   .paginatoda {
     display: block;
+    margin: auto;
+    max-width: 360px;
+    background-color: rgb(46, 45, 45);
+    border-radius: 5px;
+    box-shadow: 0 0 5px black;
+    font-size: smaller;
   }
 
-  .navbar ul {
-    width: 100%;
-    height: 40px;
-    background-color: #fff;
-    flex-shrink: 0;
-    padding: 0;
-    margin-top: 0;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  .navbar {
+    width: 360px;
+    /* border-right: solid 1px black; */
+    box-shadow: 0 0 5px black;
   }
 
   .listaNavbar {
     display: flex;
-    flex-direction: row;
     list-style: none;
+    /* padding: 24px; */
+    /* margin-left: -40px; */
+    text-align: center;
     align-items: center;
     justify-content: center;
   }
 
   .listaNavbar a {
-    display: block;
-    width: auto;
-    text-align: center;
-    font-size: smaller;
-    color: #000;
     text-decoration: none;
-    transition: transform 0.3s ease;
-    border-bottom: solid;
-    margin-top: 10px;
+    color: white;
+    /* text-decoration: underline; */
+    padding: 5px;
   }
 
   a:hover {
-    transform: scale(1.1);
+    transform: scale(1);
+  }
+
+  .conteudo {
+    display: block;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 360px;
+  }
+
+  .tarefasPendentes h2,
+  .lista-concluido h2 {
+    text-align: center;
+    border-bottom: solid white;
   }
 
   .tarefasPendentes {
     display: block;
-    gap: 15px;
+  }
+
+  .input-add-tarefa {
+    gap: 20px;
+  }
+
+  .lista-concluido {
+    display: none;
+  }
+
+  .campoListaPendente {
+    list-style: none;
+    text-align: start;
+  }
+
+  .tarefa-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: -20px;
+    gap: 10px;
+    padding-right: 20px;
+  }
+
+  .item-pendente {
+    width: 180px;
+    height: 30px;
+    padding: 5px;
+    text-align: center;
+    line-height: 30px;
+    box-shadow: 0 0 5px black;
+  }
+
+  .data-termino {
+    width: 180px;
+    height: 30px;
+    padding: 5px;
+    text-align: left;
+    /* border-bottom: solid 1px white;
+    border-right: solid 1px white; */
+    box-shadow: 0 0 5px black;
   }
 }
