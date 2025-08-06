@@ -1,1 +1,232 @@
 
+
+body {
+  height: 100vh;
+  background: linear-gradient(to bottom, rgb(163, 0, 0), rgb(34, 0, 0));
+  background-repeat: no-repeat;
+  font-family: "Inter", sans-serif;
+  color: white;
+}
+
+.paginatoda {
+  display: flex;
+  margin: auto;
+  width: 800px;
+  background-color: rgb(46, 45, 45);
+  border-radius: 5px;
+  box-shadow: 0 0 5px black;
+}
+
+.navbar {
+  width: 200px;
+  /* border-right: solid 1px black; */
+  box-shadow: 0 0 5px black;
+}
+
+.listaNavbar {
+  list-style: none;
+  padding: 24px;
+  margin-left: -40px;
+  text-align: flex-start;
+}
+
+.listaNavbar a {
+  display: block;
+  text-decoration: none;
+  color: white;
+  font-size: small;
+  transition: transform 0.3s ease;
+  /* text-decoration: underline; */
+  padding: 5px;
+}
+
+a:hover {
+  transform: scale(1.2);
+  background-color: inherit;
+  border-radius: 5px;
+  box-shadow: 0 0 5px black;
+}
+
+.conteudo {
+  flex: 1;
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.tarefasPendentes h2,
+.lista-concluido h2 {
+  text-align: center;
+  border-bottom: solid white;
+}
+
+.tarefasPendentes {
+  display: block;
+}
+
+.lista-concluido {
+  display: none;
+}
+
+.campoListaPendente {
+  list-style: none;
+  text-align: start;
+}
+
+.tarefa-item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: -20px;
+  gap: 10px;
+  padding-right: 20px;
+}
+
+.item-pendente {
+  width: 180px;
+  height: 20px;
+  padding: 5px;
+  text-align: left;
+  /* border-bottom: solid 1px white;
+  border-right: solid 1px white; */
+  box-shadow: 0 0 5px black;
+}
+
+.data-termino {
+  width: 180px;
+  height: 20px;
+  padding: 5px;
+  text-align: left;
+  /* border-bottom: solid 1px white;
+  border-right: solid 1px white; */
+  box-shadow: 0 0 5px black;
+}
+
+.concluido,
+.remover {
+  font-size: 20px;
+  transition: transform 0.3s ease;
+  background-color: transparent;
+  border: none;
+}
+
+.concluido:hover,
+.remover:hover {
+  transform: scale(1.2);
+}
+
+.botao-add-tarefa {
+  background-color: transparent;
+  border: none;
+  color: white;
+  box-shadow: 0 0 5px black;
+  border-radius: 5px;
+  transition: transform 0.3s ease;
+  padding: 5px;
+  margin: 5px;
+}
+
+.botao-add-tarefa:hover {
+  transform: scale(1.2);
+  background-color: green;
+}
+
+@media screen and (max-width: 480px) {
+  .paginatoda {
+    display: block;
+    margin: auto;
+    max-width: 360px;
+    background-color: rgb(46, 45, 45);
+    border-radius: 5px;
+    box-shadow: 0 0 5px black;
+    font-size: smaller;
+  }
+
+  .navbar {
+    width: 360px;
+    /* border-right: solid 1px black; */
+    box-shadow: 0 0 5px black;
+  }
+
+  .listaNavbar {
+    display: flex;
+    list-style: none;
+    /* padding: 24px; */
+    /* margin-left: -40px; */
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .listaNavbar a {
+    text-decoration: none;
+    color: white;
+    /* text-decoration: underline; */
+    padding: 5px;
+  }
+
+  a:hover {
+    transform: scale(1);
+  }
+
+  .conteudo {
+    display: block;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 360px;
+  }
+
+  .tarefasPendentes h2,
+  .lista-concluido h2 {
+    text-align: center;
+    border-bottom: solid white;
+  }
+
+  .tarefasPendentes {
+    display: block;
+  }
+
+  .input-add-tarefa {
+    gap: 20px;
+  }
+
+  .lista-concluido {
+    display: none;
+  }
+
+  .campoListaPendente {
+    list-style: none;
+    text-align: start;
+  }
+
+  .tarefa-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: -20px;
+    gap: 10px;
+    padding-right: 20px;
+  }
+
+  .item-pendente {
+    width: 180px;
+    height: 30px;
+    padding: 5px;
+    text-align: center;
+    line-height: 30px;
+    box-shadow: 0 0 5px black;
+  }
+
+  .data-termino {
+    width: 180px;
+    height: 30px;
+    padding: 5px;
+    text-align: left;
+    /* border-bottom: solid 1px white;
+    border-right: solid 1px white; */
+    box-shadow: 0 0 5px black;
+  }
+}
