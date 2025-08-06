@@ -20,8 +20,8 @@ const renderizarTarefas = () => {
     criarTarefa.classList.add("tarefa-item");
 
     criarTarefa.innerHTML =
-      `<p>${tarefa.texto} </p> ` +
-      `<p>Prazo de término: ${formatarData(tarefa.data)}</p>`;
+      `<p class="item-pendente">${tarefa.texto} </p> ` +
+      `<p class="data-termino">Prazo: ${formatarData(tarefa.data)}</p>`;
 
     if (tarefa.concluida) {
       const botaoRemover = BotaoRemover();
@@ -100,17 +100,13 @@ const alterarAba = () => {
   const campoConcluido = document.querySelector(".lista-concluido");
 
   abaPendente.addEventListener("click", () => {
-    if (campoPendente.style.display === "none") {
-      campoPendente.style.display = "block";
-      campoConcluido.style.display = "none";
-    }
+    campoPendente.style.display = "block";
+    campoConcluido.style.display = "none";
   });
 
   abaConcluido.addEventListener("click", () => {
-    if (campoConcluido.style.display === "none") {
-      campoConcluido.style.display = "block";
-      campoPendente.style.display = "none";
-    }
+    campoConcluido.style.display = "block";
+    campoPendente.style.display = "none";
   });
 };
 
